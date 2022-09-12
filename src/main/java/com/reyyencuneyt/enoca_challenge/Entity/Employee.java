@@ -59,13 +59,13 @@ public class Employee {
     }
     public void bonus(){
         if(this.employeeAge>=20 && this.employeeAge<=25 ){
-           this.employeeSalary = this.employeeSalary+10/100;
+           this.employeeSalary = this.employeeSalary*10/100;
         } else if (this.employeeAge>=26 && this.employeeAge<=30) {
-            this.employeeSalary=this.employeeSalary+8/100;
+            this.employeeSalary=this.employeeSalary*8/100;
         } else if (this.employeeAge>=31 && employeeAge<=36) {
-            this.employeeSalary=this.employeeSalary+5/100;
+            this.employeeSalary=this.employeeSalary*5/100;
         }else {
-            this.employeeSalary=this.employeeSalary+3/100;
+            this.employeeSalary=this.employeeSalary*3/100;
         }
     }
 
