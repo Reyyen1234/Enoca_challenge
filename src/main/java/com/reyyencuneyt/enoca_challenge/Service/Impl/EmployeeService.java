@@ -45,6 +45,17 @@ public class EmployeeService {
     public Employee editEmployee(Long id, Employee employee){
         Employee employeeToEdit = getEmployee(id);
         employeeToEdit.setEmployeeName(employee.getEmployeeName());
+        employeeToEdit.setEmployeeAge(employee.getEmployeeAge());
+        employeeToEdit.setEmployeeSalary(employee.getEmployeeSalary());
+        employeeToEdit.setEmployeeWorkingYear(employee.getEmployeeWorkingYear());
         return employeeToEdit;
+    }
+    public Employee salaryCal( Employee employee){
+        employee.setEmployeeAge(employee.getEmployeeAge());
+        employee.setEmployeeSalary(employee.getEmployeeSalary());
+        employee.setEmployeeWorkingYear(employee.getEmployeeWorkingYear());
+        employee.bonus();
+        employee.annualSalary();
+        return employee;
     }
 }

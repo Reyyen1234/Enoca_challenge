@@ -24,6 +24,7 @@ public class EmployeeDto {
         employeeDto.setEmployeeId(employee.getEmployeeId());
         employeeDto.setEmployeeAge(employee.getEmployeeAge());
         employeeDto.setEmployeeSalary(employee.getEmployeeSalary());
+        employeeDto.setEmployeeWorkingYear(employee.getEmployeeWorkingYear());
         return employeeDto;
     }
 
