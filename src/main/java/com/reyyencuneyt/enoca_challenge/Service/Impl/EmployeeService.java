@@ -55,7 +55,12 @@ public class EmployeeService {
         employee.setEmployeeSalary(employee.getEmployeeSalary());
         employee.setEmployeeWorkingYear(employee.getEmployeeWorkingYear());
         employee.bonus();
-        employee.annualSalary();
         return employee;
     }
+    public Employee annualSalary( Employee employee){
+        employee.setEmployeeSalary(employee.getEmployeeSalary());
+        employee.setEmployeeWorkingYear(employee.getEmployeeWorkingYear());
+        return employee;
+    }
+
 }

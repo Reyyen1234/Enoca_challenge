@@ -59,4 +59,9 @@ public class EmployeeController {
         Employee employee = employeeService.salaryCal(Employee.from(employeeDto));
         return new ResponseEntity<>(EmployeeDto.from(employee), HttpStatus.OK);
     }
+    @PutMapping
+    public ResponseEntity<EmployeeDto> annualSalary(@RequestBody final EmployeeDto employeeDto){
+        Employee employee = employeeService.annualSalary(Employee.from(employeeDto));
+        return new ResponseEntity<>(EmployeeDto.from(employee), HttpStatus.OK);
+    }
 }
