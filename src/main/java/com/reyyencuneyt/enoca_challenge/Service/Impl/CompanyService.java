@@ -40,9 +40,9 @@ public class CompanyService  {
     }
 
     public Company deleteCompany(Long id){
-        Company cart = getCompany(id);
-        companyRepository.delete(cart);
-        return cart;
+        Company company = getCompany(id);
+        companyRepository.delete(company);
+        return company;
     }
 
     @Transactional
@@ -57,7 +57,7 @@ public class CompanyService  {
         Company company = getCompany(companyId);
         Employee employee = employeeService.getEmployee(employeeId);
         company.addEmployee(employee);
-        employee.setCompanies(company);
+//        employee.setCompanies(company);
         return company;
     }
 

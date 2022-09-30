@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.util.List;
@@ -22,9 +24,13 @@ public class Company {
     private Long companyId;
     @Column(name = "company_name")
     private String companyName;
-    @OneToMany
-    @JoinColumn(name = "ce_fk", referencedColumnName = "companyId")
-    private List<Employee> employees;
+//      @OneToMany(targetEntity = Employee.class, cascade = CascadeType.ALL)
+//      @JoinColumn(name = "employee_id_fk" , referencedColumnName = "company_id")
+//      private List<Employee> employees;
+     @OneToMany(targetEntity = Employee.class, cascade = CascadeType.ALL)
+     @JoinColumn(name = "company_id_fk" , referencedColumnName = "company_id")
+     private List<Employee> employees;
+
     public void addEmployee(Employee employee){
         employees.add(employee);
     }

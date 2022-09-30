@@ -18,7 +18,7 @@ public class CompanyDto {
         CompanyDto companyDto = new CompanyDto();
         companyDto.setCompanyId(company.getCompanyId());
         companyDto.setCompanyName(company.getCompanyName());
-        companyDto.setEmployees(company.getEmployees().stream().collect(Collectors.toList()));
+//        companyDto.setEmployees(company.getEmployees().stream().collect(Collectors.toList()));
         return companyDto;
     }
 

@@ -60,6 +60,7 @@ public class EmployeeService {
     public Employee annualSalary( Employee employee){
         employee.setEmployeeSalary(employee.getEmployeeSalary());
         employee.setEmployeeWorkingYear(employee.getEmployeeWorkingYear());
+        employee.annualSalary();
         return employee;
     }
 

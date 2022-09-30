@@ -4,6 +4,9 @@ import com.reyyencuneyt.enoca_challenge.Entity.Company;
 import com.reyyencuneyt.enoca_challenge.Entity.Employee;
 import lombok.Data;
 
+import java.time.LocalDate;
+import java.util.Date;
+
 @Data
 public class EmployeeDto {
 

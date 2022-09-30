@@ -2,9 +2,10 @@ package com.reyyencuneyt.enoca_challenge.Entity;
 
 import com.reyyencuneyt.enoca_challenge.Dto.EmployeeDto;
 import lombok.*;
-import org.springframework.format.annotation.DateTimeFormat;
+
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data
@@ -17,7 +18,7 @@ import java.util.Date;
 
 public class Employee {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY )
     @Column(name = "employee_id")
     private Long employeeId;
 
@@ -30,20 +31,24 @@ public class Employee {
     @Column(name = "employee_salary")
     private int employeeSalary;
 
-    @Column(name = "employee_workingYear")
 
+//    Date d=new Date();
+//    int year=d.getYear();
+
+    @Column(name = "employee_workingYear")
     private int employeeWorkingYear;
 
-    @ManyToOne
-    @JoinColumn(name = "ce_fk", referencedColumnName = "employeeId")
-    private Company companies;
+
+//    @ManyToOne
+//    @JoinColumn(name="company_id")
+//    private Company companies;
 
     public static Employee from(EmployeeDto employeeDto){
         Employee employee = new Employee();
         employee.setEmployeeName(employeeDto.getEmployeeName());
         employee.setEmployeeId(employeeDto.getEmployeeId());
         employee.setEmployeeSalary(employeeDto.getEmployeeSalary());
-        employee.setEmployeeWorkingYear(employeeDto.getEmployeeWorkingYear());
+       employee.setEmployeeWorkingYear(employeeDto.getEmployeeWorkingYear());
         return employee;
     }
 
@@ -53,9 +58,9 @@ public class Employee {
         this.employeeWorkingYear = employeeWorkingYear;
     }
     public void annualSalary(){
-        if((2022-this.employeeWorkingYear)>356){
-            this.employeeSalary=this.employeeSalary*10/100;
-        }
+    if((2022-this.employeeWorkingYear)>365){
+           this.employeeSalary=this.employeeSalary*10/100;
+       }
     }
     public void bonus(){
         if(this.employeeAge>=20 && this.employeeAge<=25 ){
@@ -69,15 +74,4 @@ public class Employee {
         }
     }
 
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "employeeId=" + employeeId +
-                ", employeeName='" + employeeName + '\'' +
-                ", employeeAge=" + employeeAge +
-                ", employeeSalary=" + employeeSalary +
-                ", employeeWorkingYear=" + employeeWorkingYear +
-                ", companies=" + companies +
-                '}';
-    }
 }
