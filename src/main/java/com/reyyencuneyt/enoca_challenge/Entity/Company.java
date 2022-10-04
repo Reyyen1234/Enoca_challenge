@@ -9,6 +9,7 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -24,12 +25,11 @@ public class Company {
     private Long companyId;
     @Column(name = "company_name")
     private String companyName;
-//      @OneToMany(targetEntity = Employee.class, cascade = CascadeType.ALL)
-//      @JoinColumn(name = "employee_id_fk" , referencedColumnName = "company_id")
-//      private List<Employee> employees;
-     @OneToMany(targetEntity = Employee.class, cascade = CascadeType.ALL)
-     @JoinColumn(name = "company_id_fk" , referencedColumnName = "company_id")
-     private List<Employee> employees;
+    @OneToMany(
+            cascade = CascadeType.ALL
+    )
+    @JoinColumn(name = "companyId")
+    private List<Employee> employees = new ArrayList<>();
 
     public void addEmployee(Employee employee){
         employees.add(employee);
@@ -40,8 +40,8 @@ public class Company {
     }
     public static Company from(CompanyDto companyDto){
         Company company = new Company();
+        company.setCompanyId(companyDto.getCompanyId());
         company.setCompanyName(companyDto.getCompanyName());
-        company.setCompanyId(company.getCompanyId());
         return company;
     }
 }

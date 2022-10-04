@@ -38,15 +38,14 @@ public class Employee {
     @Column(name = "employee_workingYear")
     private int employeeWorkingYear;
 
-
-//    @ManyToOne
-//    @JoinColumn(name="company_id")
-//    private Company companies;
+    @ManyToOne
+    private Company companies;
 
     public static Employee from(EmployeeDto employeeDto){
         Employee employee = new Employee();
-        employee.setEmployeeName(employeeDto.getEmployeeName());
         employee.setEmployeeId(employeeDto.getEmployeeId());
+        employee.setEmployeeName(employeeDto.getEmployeeName());
+        employee.setEmployeeAge(employeeDto.getEmployeeAge());
         employee.setEmployeeSalary(employeeDto.getEmployeeSalary());
        employee.setEmployeeWorkingYear(employeeDto.getEmployeeWorkingYear());
         return employee;

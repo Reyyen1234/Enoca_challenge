@@ -23,32 +23,32 @@ public class CompanyController {
         this.companyService = companyService;
     }
 
-    @PostMapping(value = "companies/add")
+    @PostMapping(value = "/add")
     public ResponseEntity<CompanyDto> addCompany(@RequestBody final CompanyDto companyDto){
         Company company = companyService.addCompany(Company.from(companyDto));
         return new ResponseEntity<>(CompanyDto.from(company), HttpStatus.OK);
     }
 
-    @GetMapping(value = "companies/list")
+    @GetMapping(value = "/list")
     public ResponseEntity<List<CompanyDto>> getCompanies(){
         List<Company> companies = companyService.getCompany();
         List<CompanyDto> companyDtos = companies.stream().map(CompanyDto::from).collect(Collectors.toList());
         return new ResponseEntity<>(companyDtos, HttpStatus.OK);
     }
 
-    @GetMapping(value = "companies/find/{id}")
+    @GetMapping(value = "/find/{id}")
     public ResponseEntity<CompanyDto> getCompany(@PathVariable final Long id){
         Company company = companyService.getCompany(id);
         return new ResponseEntity<>(CompanyDto.from(company), HttpStatus.OK);
     }
 
-    @DeleteMapping(value = "companies/delete/{id}")
+    @DeleteMapping(value = "/delete/{id}")
     public ResponseEntity<CompanyDto> deleteCompany(@PathVariable final Long id){
         Company company = companyService.deleteCompany(id);
         return new ResponseEntity<>(CompanyDto.from(company), HttpStatus.OK);
     }
 
-    @PutMapping(value = "companies/edit/{id}")
+    @PutMapping(value = "/edit/{id}")
     public ResponseEntity<CompanyDto> editCompany(@PathVariable final Long id,
                                             @RequestBody final CompanyDto companyDto){
         Company company = companyService.editCompany(id, Company.from(companyDto));

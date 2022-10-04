@@ -12,13 +12,14 @@ import java.util.stream.Collectors;
 public class CompanyDto {
     private Long companyId;
     private String companyName;
-    private List<Employee> employees;
+    private List<EmployeeDto> employeesDto;
 
     public static CompanyDto from(Company company){
         CompanyDto companyDto = new CompanyDto();
         companyDto.setCompanyId(company.getCompanyId());
         companyDto.setCompanyName(company.getCompanyName());
-//        companyDto.setEmployees(company.getEmployees().stream().collect(Collectors.toList()));
+        companyDto.setEmployeesDto(company.getEmployees().stream().map(EmployeeDto::from).collect(Collectors.toList()));
+
         return companyDto;
     }
 

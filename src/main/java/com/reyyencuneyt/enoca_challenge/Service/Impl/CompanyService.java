@@ -3,6 +3,7 @@ package com.reyyencuneyt.enoca_challenge.Service.Impl;
 import com.reyyencuneyt.enoca_challenge.Entity.Company;
 import com.reyyencuneyt.enoca_challenge.Entity.Employee;
 import com.reyyencuneyt.enoca_challenge.Exception.CompanyNotFoundException;
+import com.reyyencuneyt.enoca_challenge.Exception.EmployeeIsAlreadyAssignedException;
 import com.reyyencuneyt.enoca_challenge.Repository.ICompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -56,8 +57,12 @@ public class CompanyService  {
     public Company addEmployeeToCompany(Long companyId, Long employeeId){
         Company company = getCompany(companyId);
         Employee employee = employeeService.getEmployee(employeeId);
+        if(Objects.nonNull(employee.getCompanies())){
+            throw new EmployeeIsAlreadyAssignedException(employeeId,
+                    employee.getCompanies().getCompanyId());
+        }
         company.addEmployee(employee);
-//        employee.setCompanies(company);
+        employee.setCompanies(company);
         return company;
     }
 

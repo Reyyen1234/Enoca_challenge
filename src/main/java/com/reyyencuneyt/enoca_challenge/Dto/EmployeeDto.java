@@ -20,11 +20,10 @@ public class EmployeeDto {
 
     private int employeeWorkingYear;
 
-    private Company companies;
-
     public static EmployeeDto from(Employee employee){
         EmployeeDto employeeDto = new EmployeeDto();
         employeeDto.setEmployeeId(employee.getEmployeeId());
+        employeeDto.setEmployeeName(employee.getEmployeeName());
         employeeDto.setEmployeeAge(employee.getEmployeeAge());
         employeeDto.setEmployeeSalary(employee.getEmployeeSalary());
         employeeDto.setEmployeeWorkingYear(employee.getEmployeeWorkingYear());
