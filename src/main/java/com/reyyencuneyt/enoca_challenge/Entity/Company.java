@@ -15,19 +15,16 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Entity
 @Table(name = "Company")
 public class Company {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "company_id")
+//    @Column(name = "company_id")
     private Long companyId;
     @Column(name = "company_name")
     private String companyName;
-    @OneToMany(
-            cascade = CascadeType.ALL
-    )
+    @OneToMany
     @JoinColumn(name = "companyId")
     private List<Employee> employees = new ArrayList<>();
 

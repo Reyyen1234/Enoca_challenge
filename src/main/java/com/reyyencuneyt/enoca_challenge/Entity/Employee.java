@@ -11,11 +11,8 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Entity
-@ToString
 @Table(name = "Employee")
-
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY )
@@ -39,6 +36,7 @@ public class Employee {
     private int employeeWorkingYear;
 
     @ManyToOne
+    @JoinColumn(name = "companyId", insertable = false, updatable = false)
     private Company companies;
 
     public static Employee from(EmployeeDto employeeDto){
@@ -47,15 +45,15 @@ public class Employee {
         employee.setEmployeeName(employeeDto.getEmployeeName());
         employee.setEmployeeAge(employeeDto.getEmployeeAge());
         employee.setEmployeeSalary(employeeDto.getEmployeeSalary());
-       employee.setEmployeeWorkingYear(employeeDto.getEmployeeWorkingYear());
+        employee.setEmployeeWorkingYear(employeeDto.getEmployeeWorkingYear());
         return employee;
     }
 
-    public Employee(int employeeAge, int employeeSalary, int employeeWorkingYear) {
-        this.employeeAge = employeeAge;
-        this.employeeSalary = employeeSalary;
-        this.employeeWorkingYear = employeeWorkingYear;
-    }
+//    public Employee(int employeeAge, int employeeSalary, int employeeWorkingYear) {
+//        this.employeeAge = employeeAge;
+//        this.employeeSalary = employeeSalary;
+//        this.employeeWorkingYear = employeeWorkingYear;
+//    }
     public void annualSalary(){
     if((2022-this.employeeWorkingYear)>365){
            this.employeeSalary=this.employeeSalary*10/100;
